@@ -36,36 +36,37 @@ public:
     {
       auto cfg = _bus_instance.config();
       cfg.panel = &_panel_instance;
-      cfg.pin_d0 = GPIO_NUM_15;      // B0
-      cfg.pin_d1 = GPIO_NUM_7;       // B1
-      cfg.pin_d2 = GPIO_NUM_6;       // B2
-      cfg.pin_d3 = GPIO_NUM_5;       // B3
-      cfg.pin_d4 = GPIO_NUM_4;       // B4
-      cfg.pin_d5 = GPIO_NUM_9;       // G0
-      cfg.pin_d6 = GPIO_NUM_46;      // G1
-      cfg.pin_d7 = GPIO_NUM_3;       // G2
-      cfg.pin_d8 = GPIO_NUM_8;       // G3
+      cfg.pin_d0 = GPIO_NUM_8;       // B0
+      cfg.pin_d1 = GPIO_NUM_3;       // B1
+      cfg.pin_d2 = GPIO_NUM_46;      // B2
+      cfg.pin_d3 = GPIO_NUM_9;       // B3
+      cfg.pin_d4 = GPIO_NUM_1;       // B4
+      cfg.pin_d5 = GPIO_NUM_5;       // G0
+      cfg.pin_d6 = GPIO_NUM_6;       // G1
+      cfg.pin_d7 = GPIO_NUM_7;       // G2
+      cfg.pin_d8 = GPIO_NUM_15;      // G3
       cfg.pin_d9 = GPIO_NUM_16;      // G4
-      cfg.pin_d10 = GPIO_NUM_1;      // G5
-      cfg.pin_d11 = GPIO_NUM_14;     // R0
-      cfg.pin_d12 = GPIO_NUM_21;     // R1
+      cfg.pin_d10 = GPIO_NUM_4;      // G5
+      cfg.pin_d11 = GPIO_NUM_45;     // R0
+      cfg.pin_d12 = GPIO_NUM_48;     // R1
       cfg.pin_d13 = GPIO_NUM_47;     // R2
-      cfg.pin_d14 = GPIO_NUM_48;     // R3
-      cfg.pin_d15 = GPIO_NUM_45;     // R4
-      cfg.pin_henable = GPIO_NUM_41; // DE
-      cfg.pin_vsync = GPIO_NUM_40;   // VSYNC
+      cfg.pin_d14 = GPIO_NUM_21;     // R3
+      cfg.pin_d15 = GPIO_NUM_14;     // R4
+      cfg.pin_henable = GPIO_NUM_40; // DE
+      cfg.pin_vsync = GPIO_NUM_41;   // VSYNC
       cfg.pin_hsync = GPIO_NUM_39;   // HSYNC
       cfg.pin_pclk = GPIO_NUM_42;    // PCLK
-      cfg.freq_write = 16000000;     // 16000000 - 14000000
+      cfg.freq_write = 14000000;     // 14000000
       cfg.hsync_polarity = 0;        // 0
       cfg.hsync_front_porch = 8;     // 8
-      cfg.hsync_pulse_width = 2;     // 2
-      cfg.hsync_back_porch = 43;     // 43
+      cfg.hsync_pulse_width = 4;     // 4
+      cfg.hsync_back_porch = 8;      // 8
       cfg.vsync_polarity = 0;        // 0
       cfg.vsync_front_porch = 8;     // 8
-      cfg.vsync_pulse_width = 2;     // 2
-      cfg.vsync_back_porch = 12;     // 12
+      cfg.vsync_pulse_width = 4;     // 4
+      cfg.vsync_back_porch = 8;      // 8
       cfg.pclk_idle_high = 1;        // 1
+
       _bus_instance.config(cfg);
     }
     _panel_instance.setBus(&_bus_instance);
@@ -75,7 +76,6 @@ public:
       _light_instance.config(cfg);
     }
     _panel_instance.light(&_light_instance);
-
     {
       auto cfg = _touch_instance.config();
       cfg.x_min = 0;
@@ -83,7 +83,7 @@ public:
       cfg.y_min = 0;
       cfg.y_max = 272;
       cfg.pin_int = -1;
-      cfg.pin_rst = GPIO_NUM_18;
+      cfg.pin_rst = GPIO_NUM_18; // GPIO_NUM_18
       cfg.bus_shared = false;
       cfg.offset_rotation = 0;
       // I2C
@@ -91,7 +91,7 @@ public:
       cfg.pin_sda = GPIO_NUM_19;
       cfg.pin_scl = GPIO_NUM_20;
       cfg.freq = 1000000;
-      cfg.i2c_addr = 0x5D;
+      cfg.i2c_addr = 0x5D; // 0x5D , 0x14
       _touch_instance.config(cfg);
       _panel_instance.setTouch(&_touch_instance);
     }
